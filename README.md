@@ -1,1 +1,1 @@
-# ost-dynamic-gas
+# OST Dynamic Gas Price
