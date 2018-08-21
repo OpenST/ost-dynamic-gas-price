@@ -1,6 +1,6 @@
 {
-  "name": "@ostdotcom/ost-dynamic-gas",
-  "version": "1.0.0",
+  "name": "@ostdotcom/ost-dynamic-gas-price",
+  "version": "0.9.0",
   "description": "OST dynamic gas price suggester",
   "main": "index.js",
   "keywords": [
