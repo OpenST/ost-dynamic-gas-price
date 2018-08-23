@@ -11,9 +11,7 @@ const rootPrefix = '..'
   , requestHandler = require(rootPrefix + '/lib/request')
 ;
 
-const defaultEthereumGasInGWei = 0
-  , defaultRopstemGasInGWei = 100
-;
+const defaultEthereumGasInGWei = 0;
 
 const _private = {
 
@@ -73,12 +71,9 @@ DynamicGasPriceKlass.prototype = {
    */
   get: function (chainId) {
     return new Promise(function (onResolve, onReject) {
-      if (chainId == 1) {
+      if (chainId == 1 || chainId == 3) {
         // Dynamically fetch ethereum gas in GWei
         _private.sendRequest(onResolve);
-      } else if (chainId == 3) {
-        // For ropsten chain keep the gas price fixed to 60 GWei
-        _private.renderResponse(defaultRopstemGasInGWei, onResolve);
       } else {
         // For unknown chain return 0 GWei
         _private.renderResponse(0, onResolve);
