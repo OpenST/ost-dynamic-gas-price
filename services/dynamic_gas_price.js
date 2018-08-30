@@ -71,6 +71,8 @@ DynamicGasPriceKlass.prototype = {
    */
   get: function (chainId) {
     return new Promise(function (onResolve, onReject) {
+      //mainnet:1
+      //ropsten:3
       if (chainId == 1 || chainId == 3) {
         // Dynamically fetch ethereum gas in GWei
         _private.sendRequest(onResolve);
