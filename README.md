@@ -7,8 +7,7 @@ Usage:
 ````
 dynamicGasPriceProvider = require('@ostdotcom/ost-dynamic-gas-price');
 chainId = 1; //main Ethereum Network
-dynamicGasPriceProvider.dynamicGasPrice.get(chainId)
-.then(function(val){
-    estimatedCurrentGasPrice =  val;
+dynamicGasPriceProvider.dynamicGasPrice.get(chainId).then(function(val){
+console.log("Gas Price In GWei", val);
 });
 ````
