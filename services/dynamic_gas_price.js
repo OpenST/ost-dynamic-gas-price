@@ -130,8 +130,9 @@ DynamicGasPriceKlass.prototype = {
       console.log("EtherChain Gas Price In GWei", gasPriceInGWeiFromEtherChain);
 
       // Override gas price if less then gasPriceInGWei
-      if (gasPriceInGWeiFromEtherChain != defaultEthereumGasInGWei && gasPriceInGWei > gasPriceInGWeiFromEtherChain) {
-        gasPriceInGWei = gasPriceInGWeiFromEtherChain;
+      if (gasPriceInGWeiFromEtherChain != defaultEthereumGasInGWei) {
+        gasPriceInGWei = (gasPriceInGWei == defaultEthereumGasInGWei || gasPriceInGWei > gasPriceInGWeiFromEtherChain) ?
+          gasPriceInGWeiFromEtherChain : gasPriceInGWei;
       }
     }
 
