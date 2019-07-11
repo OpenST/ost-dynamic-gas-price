@@ -118,23 +118,24 @@ DynamicGasPriceKlass.prototype = {
 
     // Get dynamic gas for mainnet and ropsten
     if (chainId == 1 || chainId == 3) {
-      // Dynamically fetch gas price in GWei from EthGasStation
-      gasPriceInGWei = await _private.sendEthGasStationRequest();
-      console.log("EthGasStation Gas Price In GWei", gasPriceInGWei);
+      // Dynamically fetch gas price in GWei from EtherChain
+      gasPriceInGWei = await _private.sendEtherChainRequest();
+      console.log("EtherChain Gas Price In GWei", gasPriceInGWei);
     }
 
+    /**** 03 July 2019:  Commented following code because only single source for gas price is being used *****/
     // if Gas Price is zero or above certain threshold check on etherchain as well
-    if (gasPriceInGWei == defaultEthereumGasInGWei || gasPriceInGWei > gasPriceThreshold) {
-      // Dynamically fetch gas price in GWei from etherchain
-      let gasPriceInGWeiFromEtherChain = await _private.sendEtherChainRequest();
-      console.log("EtherChain Gas Price In GWei", gasPriceInGWeiFromEtherChain);
-
-      // Override gas price if less then gasPriceInGWei
-      if (gasPriceInGWeiFromEtherChain != defaultEthereumGasInGWei) {
-        gasPriceInGWei = (gasPriceInGWei == defaultEthereumGasInGWei || gasPriceInGWei > gasPriceInGWeiFromEtherChain) ?
-          gasPriceInGWeiFromEtherChain : gasPriceInGWei;
-      }
-    }
+    // if (gasPriceInGWei == defaultEthereumGasInGWei || gasPriceInGWei > gasPriceThreshold) {
+    //   // Dynamically fetch gas price in GWei from etherchain
+    //   let gasPriceInGWeiFromEtherChain = await _private.sendEtherChainRequest();
+    //   console.log("EtherChain Gas Price In GWei", gasPriceInGWeiFromEtherChain);
+    //
+    //   // Override gas price if less then gasPriceInGWei
+    //   if (gasPriceInGWeiFromEtherChain != defaultEthereumGasInGWei) {
+    //     gasPriceInGWei = (gasPriceInGWei == defaultEthereumGasInGWei || gasPriceInGWei > gasPriceInGWeiFromEtherChain) ?
+    //       gasPriceInGWeiFromEtherChain : gasPriceInGWei;
+    //   }
+    // }
 
     return gasPriceInGWei;
   }
